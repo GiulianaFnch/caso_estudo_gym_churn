@@ -1,0 +1,44 @@
+[1] Dados carregados: 4000 linhas × 14 colunas
+[2] Limpeza: 0 duplicados removidos; valores omissos nas variáveis explicativas = 0 (tratados por imputação dentro do pipeline)
+    Taxa de churn global: 26.5%
+[3] Divisão 80/20 estratificada: treino=3200 (churn 26.5%), teste=800 (churn 26.5%)
+[4] Validação cruzada (5 folds, só treino): F1 = 0.858 ± 0.017
+
+[5] Avaliação no conjunto de teste
+                    modelo  precision  recall    f1  roc_auc  cv_f1_media  cv_f1_desvio
+Baseline (DummyClassifier)      0.000   0.000 0.000      NaN          NaN           NaN
+       Regressão Logística      0.884   0.825 0.854    0.977        0.858         0.017
+
+Matriz de confusão (Regressão Logística) [linhas=real, colunas=previsto]:
+[[565  23]
+ [ 37 175]]
+
+              precision    recall  f1-score   support
+
+    Fica (0)      0.939     0.961     0.950       588
+   Churn (1)      0.884     0.825     0.854       212
+
+    accuracy                          0.925       800
+   macro avg      0.911     0.893     0.902       800
+weighted avg      0.924     0.925     0.924       800
+
+[6] Coeficientes ordenados por influência (|coef|):
+                         variavel  coeficiente  odds_ratio
+Avg_class_frequency_current_month       -4.215       0.015
+                         Lifetime       -3.756       0.023
+        Avg_class_frequency_total        3.136      23.015
+                              Age       -1.184       0.306
+            Month_to_end_contract       -0.738       0.478
+                     Group_visits       -0.733       0.481
+                Contract_period_1        0.656       1.927
+               Contract_period_12       -0.579       0.560
+     Avg_additional_charges_total       -0.575       0.563
+                    Promo_friends       -0.459       0.632
+                    Near_Location       -0.084       0.920
+                Contract_period_6       -0.080       0.923
+                            Phone       -0.075       0.928
+                          Partner       -0.071       0.932
+                           gender        0.044       1.045
+
+[7] Pipeline guardado em models/pipeline_churn.joblib e verificado após recarregar
+    Métricas guardadas em outputs/metricas.json
